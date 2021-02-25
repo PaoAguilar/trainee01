@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  background-color: #fdebd0;
+  font-family: "Muli", sans-serif;
+}
+
+.konami-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* width: 40rem; */
+}
+
+h1 {
+  font-size: 76px;
+  color: #5b6361;
+}
+
+p {
+  font-size: 24px;
+  color: #353a39;
+  cursor: pointer;
+  margin-bottom: 3em;
+}
+
+.form-container {
+  padding: 3rem 0 0 3rem;
+}
+.form-container a {
+  padding: 10px;
+  font-size: 24px;
+  background-color: #a79b58;
+  color: #fff;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #d39d38;
+}

@@ -28,7 +28,7 @@ body {
 .register {
   display: flex;
   justify-content: center;
-  padding: 5rem;
+  padding: 3rem;
 }
 
 .register__container {
@@ -114,4 +114,32 @@ body {
 }
 .button:hover {
   filter: brightness(110%);
+}
+
+.konami-container {
+  padding: 3rem 0 0 3rem;
+}
+.konami-container a {
+  padding: 10px;
+  font-size: 24px;
+  background-color: #a79b58;
+  color: #fff;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #d39d38;
+}
+
+@media only screen and (max-width: 430px) {
+  .register__container {
+    background-color: transparent;
+    color: white;
+    border: none;
+    box-shadow: none;
+    padding: 0px;
+    width: 100%;
+  }
+  .label {
+    color: white;
+  }
 }

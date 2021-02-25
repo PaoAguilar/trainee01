@@ -35,7 +35,7 @@ const validateOnSubmit = () => {
 
     for (const fieldKey in fields) {
       const input = document.querySelector(`#${fieldKey}`);
-      console.log(`Nombre: ${fieldKey} Valor: ${input.value}`);
+      console.log(`Field: ${fieldKey} Value: ${input.value}`);
     }
     console.log("WE DID IT!");
   });
