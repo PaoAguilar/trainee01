@@ -1,45 +1,64 @@
 const form = document.querySelector(".form");
-const fields = [
-  "name",
-  "lastname",
-  "age",
-  "checkbox",
-  "phone",
-  "experience",
-  "website",
-  "email",
-  "password",
-  "password_confirmation",
-];
+const fields = {
+  name: false,
+  lastname: false,
+  age: false,
+  checkbox: false,
+  phone: false,
+  experience: false,
+  website: false,
+  email: false,
+  password: false,
+  password_confirmation: false,
+};
+
+let registerButton = (document.querySelector(".button").disabled = true);
+
+const validateForm = () => {
+  let validForm = true;
+  for (const fieldKey in fields) {
+    // console.log(`Nombre: ${fieldKey} Valor: ${input.value}`);
+    // let isValid = validateFields(input);
+    // Si todos son true, se activa el boton
+    validForm = validForm && fields[fieldKey];
+    // const answer = document.querySelector(`.${field}`).values;
+    // console.log(answer);
+  }
+  // Si validForm es true, se habilita el boton, si es false sigue deshabilitado
+  registerButton = document.querySelector(".button").disabled = !validForm;
+};
 
 const validateOnSubmit = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    fields.forEach((field) => {
-      const input = document.querySelector(`#${field}`);
+    // validateForm();
 
-      //   console.log("HI");
-      // console.log(age.value);
-
-      validateFields(input);
-      // const answer = document.querySelector(`.${field}`).values;
-      // console.log(answer);
-    });
+    for (const fieldKey in fields) {
+      const input = document.querySelector(`#${fieldKey}`);
+      console.log(`Nombre: ${fieldKey} Valor: ${input.value}`);
+    }
+    console.log("WE DID IT!");
   });
 };
 
 const validateOnEntry = () => {
-  fields.forEach((field) => {
-    const input = document.querySelector(`#${field}`);
+  for (const fieldKey in fields) {
+    const input = document.querySelector(`#${fieldKey}`);
     input.addEventListener("input", (event) => {
-      validateFields(input);
+      let isValid = validateFields(input);
+      fields[fieldKey] = isValid;
+      validateForm();
+      console.log(fields);
     });
-  });
+    // console.log(fieldKey);
+  }
   console.log("si llega");
 };
 
 const validateFields = (field) => {
   // Check is not an empty values
+
+  let isValid = false;
 
   if (field.value.trim() === "") {
     setStatus(
@@ -61,6 +80,7 @@ const validateFields = (field) => {
       );
     } else if (re.test(field.value)) {
       setStatus(field, null, "success");
+      isValid = true;
     } else {
       setStatus(field, "Numbers are not allowed", "error");
     }
@@ -76,6 +96,7 @@ const validateFields = (field) => {
       );
     } else if (re.test(field.value)) {
       setStatus(field, null, "success");
+      isValid = true;
     } else {
       setStatus(field, "Numbers are not allowed", "error");
     }
@@ -85,6 +106,7 @@ const validateFields = (field) => {
   if (field.id === "age") {
     if (field.value > 17 && field.value < 96) {
       setStatus(field, null, "success");
+      isValid = true;
     } else {
       setStatus(
         field,
@@ -99,9 +121,22 @@ const validateFields = (field) => {
     const re = /(?:^\d{4}[- ]?\d{4}$)/;
     if (re.test(field.value)) {
       setStatus(field, null, "success");
+      isValid = true;
     } else {
       setStatus(field, "Please enter a valid phone number", "error");
     }
+  }
+
+  // check level experience
+  if (field.id === "experience") {
+    setStatus(field, null, "success");
+    isValid = true;
+  }
+
+  // check password
+  if (field.id === "password") {
+    setStatus(field, null, "success");
+    isValid = true;
   }
 
   // check for a valid website
@@ -109,6 +144,7 @@ const validateFields = (field) => {
     const re = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/;
     if (re.test(field.value)) {
       setStatus(field, null, "success");
+      isValid = true;
     } else {
       setStatus(field, "Please enter a valid url", "error");
     }
@@ -119,6 +155,7 @@ const validateFields = (field) => {
     const re = /[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,4}/;
     if (re.test(field.value)) {
       setStatus(field, null, "success");
+      isValid = true;
     } else {
       setStatus(field, "Please enter a valid email address", "error");
     }
@@ -134,6 +171,7 @@ const validateFields = (field) => {
       setStatus(field, "Password does not match", "error");
     } else {
       setStatus(field, null, "success");
+      isValid = true;
     }
   }
 
@@ -143,8 +181,12 @@ const validateFields = (field) => {
       setStatus(field, "Please accept the terms", "error");
     } else {
       setStatus(field, null, "success");
+      isValid = true;
     }
   }
+
+  return isValid;
+  // registerButton = document.querySelector(".button").disabled = false;
 };
 
 const setStatus = (field, message, status) => {
