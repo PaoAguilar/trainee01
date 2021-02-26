@@ -37,7 +37,7 @@ export const validateFields = (field) => {
     } else {
       setStatus(
         field,
-        "Please enter an integer number greater than 17",
+        "Please enter an integer number between 18 and 95",
         "error"
       );
     }

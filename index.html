@@ -205,7 +205,12 @@
             <!-- LEVEL OF EXPERIENCE -->
             <div class="input-group">
               <label for="phone" class="label">Level of experience</label>
-              <input id="experience" type="range" />
+              <input id="experience" type="range" list="tickmarks"/>
+              <datalist id="tickmarks">
+                <option value="0"></option>
+                <option value="50"></option>
+                <option value="100"></option>
+              </datalist>
               <span class="error-message"></span>
               <svg
                 class="icon icon-success hidden hidden"
