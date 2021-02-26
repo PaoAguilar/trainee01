@@ -1,14 +1,45 @@
 body {
   margin: 0;
-  background-color: #fdebd0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 184, 101, 1) 0%,
+    rgba(240, 184, 101, 1) 14%,
+    rgba(253, 235, 208, 1) 100%
+  );
   font-family: "Muli", sans-serif;
 }
+.try-again {
+  display: flex;
+  justify-content: center;
+}
+.try-again a {
+  padding: 10px;
+  font-size: 24px;
+  background-color: #f0b865;
+  color: #fff;
+  text-decoration: none;
+}
 
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
 .konami-container {
   display: flex;
   flex-direction: column;
+  min-height: 700px;
+  padding: 60px 68px 40px;
+  width: 40rem;
   text-align: center;
+
   /* width: 40rem; */
+}
+
+.img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
 }
 
 h1 {
@@ -19,8 +50,10 @@ h1 {
 p {
   font-size: 24px;
   color: #353a39;
-  cursor: pointer;
   margin-bottom: 3em;
+}
+.hidden {
+  display: none;
 }
 
 .form-container {
@@ -29,10 +62,10 @@ p {
 .form-container a {
   padding: 10px;
   font-size: 24px;
-  background-color: #a79b58;
+  background-color: #f0b865;
   color: #fff;
   text-decoration: none;
 }
 a:hover {
-  background-color: #d39d38;
+  background-color: #c19e67;
 }
