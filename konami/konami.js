@@ -1,5 +1,5 @@
 const keyPressedArray = [];
-const code = "trainee";
+const code = "trainee01";
 const codeLength = code.length;
 
 const keyUpHandler = (e) => {
