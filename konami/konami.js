@@ -15,7 +15,11 @@ const keyUpHandler = (e) => {
   let keyPressedString = keyPressedArray.join("");
   let keyPressedStringLength = keyPressedString.length;
   if (codeLength === keyPressedStringLength && keyPressedString != code) {
-    location.reload();
+    // location.reload();
+    const instructions = document.querySelector(".instructions");
+    const tryAgain = document.querySelector(".try-again");
+    instructions.style.visibility = "hidden";
+    tryAgain.classList.remove("hidden");
   } else if (
     codeLength === keyPressedStringLength &&
     keyPressedString === code
