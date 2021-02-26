@@ -27,6 +27,8 @@ const validateForm = () => {
     registerButton.classList.add("button");
   } else {
     registerButton.disabled = true;
+    registerButton.classList.add("disabled-button");
+    registerButton.classList.remove("button");
   }
 };
 
@@ -37,6 +39,9 @@ const validateOnSubmit = () => {
     let thanksText = document.querySelector(".thanks");
     warningText.style.visibility = "hidden";
     thanksText.classList.remove("hidden");
+    registerButton.classList.remove("button");
+    registerButton.classList.add("disabled-button");
+    registerButton.disabled = true;
 
     for (const fieldKey in fields) {
       const input = document.querySelector(`#${fieldKey}`);

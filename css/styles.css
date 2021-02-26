@@ -48,7 +48,7 @@ body {
 .container-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 2.5rem;
+  grid-gap: 1rem;
 }
 
 .label {
@@ -67,7 +67,7 @@ body {
 .input {
   appearance: none;
   display: block;
-  width: 100%;
+  width: 90%;
   color: #2d3748;
   border: 1px solid #cbd5e0;
   line-height: 1.25;

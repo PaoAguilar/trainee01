@@ -1,28 +1,13 @@
 import { setStatus } from "./setStatus.js";
 const form = document.querySelector(".form");
 export const validateFields = (field) => {
-  // Check is not an empty values
   let isValid = false;
-
-  if (field.value.trim() === "") {
-    setStatus(
-      field,
-      `${field.previousElementSibling.innerText} cannot be blank`,
-      "error"
-    );
-  } else {
-    setStatus(field, null, "success");
-  }
 
   //   check the name is not a number
   if (field.id === "name") {
-    const re = /^[A-Za-z]\w+/;
-    if (field.value.trim() === "") {
-      setStatus(
-        field,
-        `${field.previousElementSibling.innerText} cannot be blank`,
-        "error"
-      );
+    const re = /^[A-ZÀ-ÿa-z\ ]+$/;
+    if (field.value === "") {
+      setStatus(field, `${field.id} cannot be blank`, "error");
     } else if (re.test(field.value)) {
       setStatus(field, null, "success");
       isValid = true;
@@ -33,13 +18,9 @@ export const validateFields = (field) => {
 
   //   check the lastname is not a number
   if (field.id === "lastname") {
-    const re = /^[A-Za-z]\w+/;
-    if (field.value.trim() === "") {
-      setStatus(
-        field,
-        `${field.previousElementSibling.innerText} cannot be blank`,
-        "error"
-      );
+    const re = /^[A-ZÀ-ÿa-z\ ]+$/;
+    if (field.value === "") {
+      setStatus(field, `${field.id} cannot be blank`, "error");
     } else if (re.test(field.value)) {
       setStatus(field, null, "success");
       isValid = true;
@@ -103,15 +84,22 @@ export const validateFields = (field) => {
 
   // check password
   if (field.id === "password") {
-    setStatus(field, null, "success");
-    isValid = true;
+    const re = /[a-z0-9_-]{6,18}/;
+    if (field.value === "") {
+      setStatus(field, `${field.id} cannot be blank`, "error");
+    } else if (re.test(field.value)) {
+      setStatus(field, null, "success");
+      isValid = true;
+    } else {
+      setStatus(field, "Password length at least 6 ", "error");
+    }
   }
 
-  // Password confirmation edge case
+  // Password confirmation
   if (field.id === "password_confirmation") {
     const passwordField = form.querySelector("#password");
 
-    if (field.value.trim() == "") {
+    if (field.value == "") {
       setStatus(field, "Password confirmation required", "error");
     } else if (field.value != passwordField.value) {
       setStatus(field, "Password does not match", "error");
