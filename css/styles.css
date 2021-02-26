@@ -59,6 +59,11 @@ body {
   color: #2d3748;
 }
 
+.thanks {
+  font-size: 1.5rem;
+  color: green;
+}
+
 .input {
   appearance: none;
   display: block;
@@ -114,6 +119,19 @@ body {
 }
 .button:hover {
   filter: brightness(110%);
+}
+
+.disabled-button {
+  background-color: #a9cbc4;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  justify-content: center;
 }
 
 .konami-container {

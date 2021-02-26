@@ -13,23 +13,34 @@ const fields = {
   password_confirmation: false,
 };
 
-let registerButton = (document.querySelector(".button").disabled = true);
-
+let registerButton = document.querySelector(".disabled-button");
+registerButton.disabled = true;
 const validateForm = () => {
   let validForm = true;
   for (const fieldKey in fields) {
     validForm = validForm && fields[fieldKey];
   }
-  registerButton = document.querySelector(".button").disabled = !validForm;
+  console.log(`Valid Form ${validForm}`);
+  if (validForm === true) {
+    registerButton.disabled = false;
+    registerButton.classList.remove("disabled-button");
+    registerButton.classList.add("button");
+  } else {
+    registerButton.disabled = true;
+  }
 };
 
 const validateOnSubmit = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let warningText = document.querySelector(".warning");
+    let thanksText = document.querySelector(".thanks");
+    warningText.style.visibility = "hidden";
+    thanksText.classList.remove("hidden");
 
     for (const fieldKey in fields) {
       const input = document.querySelector(`#${fieldKey}`);
-      console.log(`Field: ${fieldKey} Value: ${input.value}`);
+      console.log(`${fieldKey}: ${input.value}`);
     }
     console.log("WELL DONE!");
   });
