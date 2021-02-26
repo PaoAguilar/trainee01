@@ -13,17 +13,7 @@ const keyUpHandler = (e) => {
     keyPressedArray.length - codeLength // va a eliminar lo que ingrese el usuario menos el lago del codigo (7)
   );
   let keyPressedString = keyPressedArray.join("");
-  let keyPressedStringLength = keyPressedString.length;
-  if (codeLength === keyPressedStringLength && keyPressedString != code) {
-    // location.reload();
-    const instructions = document.querySelector(".instructions");
-    const tryAgain = document.querySelector(".try-again");
-    instructions.style.visibility = "hidden";
-    tryAgain.classList.remove("hidden");
-  } else if (
-    codeLength === keyPressedStringLength &&
-    keyPressedString === code
-  ) {
+  if (keyPressedString === code) {
     console.log("DONE");
     konamiStatus("success");
   }
