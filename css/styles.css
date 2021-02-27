@@ -13,15 +13,12 @@ body {
   display: none;
 }
 
-.icon {
+.icon-success {
   width: 24px;
   height: 24px;
   position: absolute;
   top: 32px;
   right: 5px;
-}
-
-.icon.icon-success {
   fill: green;
 }
 
